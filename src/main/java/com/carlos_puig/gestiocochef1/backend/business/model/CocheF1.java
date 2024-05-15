@@ -3,114 +3,127 @@ package com.carlos_puig.gestiocochef1.backend.business.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+
+
+@Entity
+@Table(name = "COCHES_F1")
 public class CocheF1 implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	private Long id;
-	private String nombre;
-	private Escuderia escuderia;
-	private String descripcion;
-	private String temporada;
-	private Date fechaPresentacion;
-	private boolean activo;
-	
-	public CocheF1() {
-		
-	}
+    private static final long serialVersionUID = 1L;
 
-	public Long getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private String nombre;
+    private String descripcion;
+    private String temporada;
 
-	public String getNombre() {
-		return nombre;
-	}
+    @Enumerated(EnumType.STRING)
+    private Escuderia escuderia;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    @Temporal(TemporalType.DATE)
+    private Date fechaPresentacion;
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    private boolean activo;
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public CocheF1() {
 
-	
+    }
 
-	public Escuderia getEscuderia() {
-		return escuderia;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setEscuderia(Escuderia escuderia) {
-		this.escuderia = escuderia;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getTemporada() {
-		return temporada;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setTemporada(String temporada) {
-		this.temporada = temporada;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public Date getFechaPresentacion() {
-		return fechaPresentacion;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public void setFechaPresentacion(Date fechaPresentacion) {
-		this.fechaPresentacion = fechaPresentacion;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public boolean isActivo() {
-		return activo;
-	}
+    public String getTemporada() {
+        return temporada;
+    }
 
-	public void setActivo(boolean activo) {
-		this.activo = activo;
-	}
+    public void setTemporada(String temporada) {
+        this.temporada = temporada;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public Escuderia getEscuderia() {
+        return escuderia;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
+    public void setEscuderia(Escuderia escuderia) {
+        this.escuderia = escuderia;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		CocheF1 other = (CocheF1) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
+    public Date getFechaPresentacion() {
+        return fechaPresentacion;
+    }
 
-	@Override
-	public String toString() {
-		return "CocheF1 [id=" + id + ", nombre=" + nombre + ", escuderia=" + escuderia + ", descripcion=" + descripcion
-				+ ", temporada=" + temporada + ", fechaPresentacion=" + fechaPresentacion + ", activo=" + activo + "]";
-	}
+    public void setFechaPresentacion(Date fechaPresentacion) {
+        this.fechaPresentacion = fechaPresentacion;
+    }
 
-	
-	
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        CocheF1 other = (CocheF1) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "CocheF1 [id=" + id + ", nombre=" + nombre + ", escuderia=" + escuderia + ", descripcion=" + descripcion
+                + ", temporada=" + temporada + ", fechaPresentacion=" + fechaPresentacion + ", activo=" + activo + "]";
+    }
+
 }
