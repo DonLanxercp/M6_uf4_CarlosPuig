@@ -16,7 +16,7 @@ import com.carlos_puig.gestiocochef1.backend.repositories.GestioCocheRepository;
 import jakarta.transaction.*;
 
 @Service
-public class ProductoServicesImpl implements ProductoServices {
+public class CocheServicesImpl implements CocheServices {
 
 	@Autowired  // injectem el repositori
 	private GestioCocheRepository gestioCocheRepository;
@@ -26,7 +26,7 @@ public class ProductoServicesImpl implements ProductoServices {
 	public Long create(CocheF1 cocheF1) { 
 		
 		if(cocheF1.getId() != null) {
-			throw new IllegalStateException("No se puede crear un producto con código not null");
+			throw new IllegalStateException("El id se agrega automáticamente, no se debe colocar de forma manual");
 		}
 		
 		Long id = System.currentTimeMillis();
@@ -43,7 +43,20 @@ public class ProductoServicesImpl implements ProductoServices {
 	
 	@Override
 	public List<CocheF1> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return gestioCocheRepository.findAll();
+	}
+	@Override
+	public List<CocheF1> findByEscuderia(Escuderia escuderia) {
+		return gestioCocheRepository.findByEscuderia(escuderia);
+	}
+	@Override
+	@Transactional
+	public void delete(Long id) {
+		gestioCocheRepository.deleteById(id);
+	}
+	@Override
+	@Transactional
+	public void update(CocheF1 cochef1) {
+		gestioCocheRepository.save(cochef1);
 	}
 }
